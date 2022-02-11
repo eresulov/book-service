@@ -1,4 +1,4 @@
-package homework3;
+package Garbage;
 
 public class Person {
 int id;
