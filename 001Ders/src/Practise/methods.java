@@ -24,7 +24,7 @@ public class methods {
 
 	}
 
-}
+
 
 	public static void welcome(int x) {
 		int result = (x + 2) * 6;
