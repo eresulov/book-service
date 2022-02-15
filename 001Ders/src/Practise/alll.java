@@ -38,3 +38,4 @@ for (int cap2 : array) {
 }
 System.out.println("2 ci cem "+cem2);
 }
+}
