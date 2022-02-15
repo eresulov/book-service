@@ -1,9 +1,10 @@
 package Practise;
 
 import java.util.Scanner;
-
-public class Arrays {
+//bu sualimdir
+public class  alll{
 	public static void main(String[] args) {
+		System.out.println("Bu sualdir.");
 		int array[] = new int[5];
 		int cem = 0;
 		
