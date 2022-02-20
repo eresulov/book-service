@@ -1,7 +1,8 @@
 package Practise;
 
 import java.util.Random;
-//budaki 2 ci sualdir
+
+//bu buble sort 2 for olandir
 public class Array2 {
 	static void bubbleSort(int array[]) {
 		System.out.println("Bu2 ci sualdir");

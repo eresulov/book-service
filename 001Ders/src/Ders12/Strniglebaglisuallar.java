@@ -1,8 +1,8 @@
 package Ders12;
 
 import java.util.Scanner;
-//verdiyiniz tapsiriq budur
-public class ExampleString {
+
+public class Strniglebaglisuallar {
 public static void main(String[] args) {
 	Scanner scan =new Scanner(System.in);
 	System.out.println("Deyeri daxil edin : ");

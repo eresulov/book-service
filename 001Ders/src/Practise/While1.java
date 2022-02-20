@@ -1,6 +1,8 @@
 package Practise;
 import java.util.Scanner;
 public class While1 {
+	
+	// eded sadedirmi onu yoxlayir
 public static void main(String[] args) {
     System.out.println("Bir eded daxil et");
     Scanner scan=new Scanner(System.in);
