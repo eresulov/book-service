@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxWidth="1000.0" minHeight="100.0" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+   <children>
+      <TextField fx:id="customerName" layoutX="10.0" layoutY="20.0" promptText="Musteri adi" />
+      <TextField fx:id="customerSurname" layoutX="10.0" layoutY="60.0" promptText="Musteri soyadi" />
+      <TextField fx:id="customernPhone" layoutX="10.0" layoutY="99.0" promptText="nomre" />
+      <TextField fx:id="customerAddress" layoutX="10.0" layoutY="138.0" promptText="address" />
+      <Button layoutX="10.0" layoutY="188.0" mnemonicParsing="false" onAction="#saveCustomer" prefHeight="39.0" prefWidth="187.0" text="Yadda Saxla" textFill="#da1c1c">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

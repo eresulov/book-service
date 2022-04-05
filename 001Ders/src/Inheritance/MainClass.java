@@ -11,5 +11,6 @@ public class MainClass {
 		System.out.println("Neqeder maas artimi olsun isteyirsiz?");
 		int maasArtimi = scan.nextInt();
 		og.raiseSalary(maasArtimi);
-	}
+		System.out.println(og.toString());
+		}
 }

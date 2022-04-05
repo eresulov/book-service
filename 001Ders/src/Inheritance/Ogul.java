@@ -2,6 +2,11 @@ package Inheritance;
 
 
 public class Ogul extends Ata {
+@Override
+	public String toString() {
+		
+		return "Emral";
+	}
 public int num_of_employees;
 	Ogul(String name, int id,int num_of_employees) {
 		super(name, id);
