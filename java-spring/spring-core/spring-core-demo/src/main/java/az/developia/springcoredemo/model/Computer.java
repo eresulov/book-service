@@ -1,9 +1,11 @@
-package az.developia.springcoredemo;
+package az.developia.springcoredemo.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
+
+@Scope(scopeName="prototype")
 public class Computer {
 	private Integer id;
 	private String name;

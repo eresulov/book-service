@@ -1,8 +1,7 @@
-package az.developia.springcoredemo;
+package az.developia.springcoredemo.model;
 
 import org.springframework.stereotype.Component;
 
-@Component(value ="musteri")
 public class Customer {
 private Integer id;
 public Integer getId() {
@@ -14,11 +13,10 @@ public void setId(Integer id) {
 public String getName() {
 	return name;
 }
+
 public Customer() {
 	System.out.println("Spring Customerden obyekt aldi");
 }
-
-
 public void setName(String name) {
 	this.name = name;
 }

@@ -1,8 +1,7 @@
-package az.developia.springcoredemo;
+package az.developia.springcoredemo.model;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class Ram {
 	private Integer id;
 	private String name;

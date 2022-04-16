@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Computer s rams</title>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Model</th>
+            <th>Size</th>
+        </tr>
+    </thead>
+    <tbody id="rams"></tbody>
+</table>
+<script type="text/javascript">
+    let http=XmlHttpRequest();
+    http.onload=function(){
+        var result =this.responseText;
+        var.rams=JSON.parse(result);
+        console.log(rams);
+    }
+    http.open('GET','http://localhost:8091/rams',true);
+    http.send();
+</script>
+</body>
+</html>
