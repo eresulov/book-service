@@ -23,6 +23,7 @@ List<Student> students=new ArrayList<Student>();
 	std1.setId(1);
 	std1.setPhone("0708788867");
 	std1.setAddress("Genclik");
+	//authentication və authorization
 	Student std2=new Student();
 	 std2.setName("Murad");
 	 std2.setSurname("Mirzeyev");

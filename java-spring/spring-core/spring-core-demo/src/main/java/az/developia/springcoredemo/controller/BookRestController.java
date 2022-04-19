@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import az.developia.springcoredemo.model.Book;
+import az.developia.springcoredemo.model.Student;
 @RestController
 @CrossOrigin(origins="*")
 @RequestMapping(path="/books")

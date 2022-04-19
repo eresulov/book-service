@@ -1,28 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Computer s rams</title>
+    <title>My Program</title>
 </head>
 <body>
-<table>
+    <input id="ramModel" placeholder="ramin modelini bura yaz"><br>
+    <input id="ramSize" placeholder="ramin size ni bura yaz"><br>
+    <button onclick="onSaveRam()">Yadda saxla</button>
+
+
+ <hr>   
+<table style="width: 100%" border ="1">
     <thead>
         <tr>
             <th>id</th>
             <th>Model</th>
-            <th>Size</th>
+            <th>name</th>
         </tr>
     </thead>
     <tbody id="rams"></tbody>
+    
 </table>
-<script type="text/javascript">
-    let http=XmlHttpRequest();
+<script>
+  
+
+let http=new XMLHttpRequest();
     http.onload=function(){
         var result =this.responseText;
-        var.rams=JSON.parse(result);
-        console.log(rams);
+        var rams=JSON.parse(result);
+        console.log(rams)
+        var r="";
+        for (let i = 0; i<rams.length; i++) {
+        r+="<tr>";
+        r+="<td>"+rams[i].id;
+        r+="</td>";
+
+        r+="<td>"+rams[i].model;
+        r+="</td>";
+
+        r+="<td>"+rams[i].name;
+        r+="</td>";
+        r+="</tr>";
     }
-    http.open('GET','http://localhost:8091/rams',true);
+        document.getElementById('rams').innerHTML=r;
+    }
+    
+        http.open('GET','http://localhost:8091/rams',true);
     http.send();
+
+function onSaveRam(){
+    let ramModel=document.getElementById('ramModel').value;
+    let ramSize =document.getElementById('ramSize').value;
+    let ramObj={model:ramModel,size:ramSize};
+    let http= new XMLHttpRequest;
+      http.open('POST','http://localhost:8091/rams',true);
+      http.setRequestHeader("Content-Type","application/json");
+    http.send(JSON.stringify(ramObj));
+
+
+}
+    
 </script>
 </body>
-</html>
+</html> 
