@@ -1,8 +1,17 @@
 package az.developia.springcoredemo.model;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+@Table(name="rams") 
+@Entity 
 public class Ram {
+	@Id //primary key and not null  
+@GeneratedValue(strategy = GenerationType.IDENTITY)  //auto increment 
 	private Integer id;
 	public Integer getId() {
 		return id;
@@ -11,6 +20,8 @@ public class Ram {
 		this.id = id;
 	}
 	private String model;
+	
+	@Column(name = "olcu")
 	private Integer size;
 	private String name;
 	public String getModel() {

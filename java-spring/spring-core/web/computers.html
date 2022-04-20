@@ -6,6 +6,7 @@
 <body>
     <input id="ramModel" placeholder="ramin modelini bura yaz"><br>
     <input id="ramSize" placeholder="ramin size ni bura yaz"><br>
+    <input id="ramName" placeholder="ramin adini yazin"><br>
     <button onclick="onSaveRam()">Yadda saxla</button>
 
 
@@ -15,7 +16,8 @@
         <tr>
             <th>id</th>
             <th>Model</th>
-            <th>name</th>
+            <th>Name</th>
+            <th>Operations</th>
         </tr>
     </thead>
     <tbody id="rams"></tbody>
@@ -24,6 +26,8 @@
 <script>
   
 
+function loadRams(){
+    
 let http=new XMLHttpRequest();
     http.onload=function(){
         var result =this.responseText;
@@ -40,6 +44,10 @@ let http=new XMLHttpRequest();
 
         r+="<td>"+rams[i].name;
         r+="</td>";
+
+         r+="<td><button onlick='deleteRam("+rams[i].id+")'>Delete</button>";
+        r+="</td>";
+
         r+="</tr>";
     }
         document.getElementById('rams').innerHTML=r;
@@ -47,19 +55,28 @@ let http=new XMLHttpRequest();
     
         http.open('GET','http://localhost:8091/rams',true);
     http.send();
+}    
 
 function onSaveRam(){
     let ramModel=document.getElementById('ramModel').value;
     let ramSize =document.getElementById('ramSize').value;
-    let ramObj={model:ramModel,size:ramSize};
-    let http= new XMLHttpRequest;
+    let ramName=document.getElementById('ramName').value;
+    let ramObj={model:ramModel,size:ramSize,name:ramName};
+
+    let http= new XMLHttpRequest();
+    http.onload=function(){
+loadRams();
+    }
       http.open('POST','http://localhost:8091/rams',true);
-      http.setRequestHeader("Content-Type","application/json");
-    http.send(JSON.stringify(ramObj));
+      http.setRequestHeader("Content-Type","application/json"); //servere bildiririkki gonderdiyimiz melumatin tipi nedir
+    http.send(JSON.stringify(ramObj)); // post servislerde send in ici bos olmur
 
-
+loadRams();
+function deleteRam(ramId){
+    alert(ramID);
 }
-    
+}
+
 </script>
 </body>
 </html> 
