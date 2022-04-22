@@ -1,10 +1,10 @@
-package az.developia.springsecuritydemo2;
+package az.developia.springsecuritydemo3;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringSecurityDemo2ApplicationTests {
+class SpringSecurityDemo3ApplicationTests {
 
 	@Test
 	void contextLoads() {

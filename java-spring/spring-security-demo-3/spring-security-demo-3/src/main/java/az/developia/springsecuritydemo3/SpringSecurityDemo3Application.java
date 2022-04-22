@@ -1,13 +1,13 @@
-package az.developia.springsecuritydemo2;
+package az.developia.springsecuritydemo3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringSecurityDemo2Application {
+public class SpringSecurityDemo3Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringSecurityDemo2Application.class, args);
+		SpringApplication.run(SpringSecurityDemo3Application.class, args);
 	}
 
 }
