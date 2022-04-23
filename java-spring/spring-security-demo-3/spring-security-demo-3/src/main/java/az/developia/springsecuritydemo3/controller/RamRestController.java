@@ -44,7 +44,7 @@ private Ramrepo ramrepository;
 		ramrepository.save(ram);
 	}
 	
-	@DeleteMapping(path ="/rams/{id}")
+	@DeleteMapping(path ="/{id}")
 	public void deleteById(@PathVariable Integer id) {
 		ramrepository.deleteById(id);
 		

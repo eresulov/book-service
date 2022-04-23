@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <input id="username" placeholder="username"><br>
+    <input id="password" placeholder="password"><br>
+    <button onclick="onLogin()">Login</button>
+
+
+<script>
+  
+function onLogin(){
+    let username=document.getElementById('username').value;
+    let password =document.getElementById('password').value;
+    
+    let http=new XMLHttpRequest(); 
+    http.onload=function(){
+       localStorage.setItem('token',"Basic "+window.btoa(username+":"+password));
+      window.location.href="computers.html";
+      
+}
+http.onerror=function(){
+alert('Fail');
+}
+
+ http.open('GET','http://localhost:8091/users/login',true);
+     http.setRequestHeader("Authorization","Basic "+window.btoa(username+":"+password));
+    http.send(); // post servislerde send in ici bos olmur get dir deye ici bos olmalidir
+
+}
+</script>
+</body>
+</html> 
