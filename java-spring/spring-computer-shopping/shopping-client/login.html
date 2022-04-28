@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>    
-    <title>Login Page</title>
+    <title>Computer Shopping Login Page</title>
 </head>
 <body>
-  
+  <div th:fragment="header">
+      <nav>
+          
+      </nav>
+  </div>
     <input id="username" placeholder="username"><br>
     <input id="password" placeholder="password"><br>
     <button onclick="onLogin()">Login</button>
-    <br>
-    <p>don't you have an account?</p>
-    <a href="signup.html">Create Account</a>
+
 
 <script>
   
@@ -18,9 +20,9 @@ function onLogin(){
     let username=document.getElementById('username').value;
     let password =document.getElementById('password').value;
     
-    let http=new XMLHttpRequest(); // obyektini yaradir 
+    let http=new XMLHttpRequest(); 
     http.onload=function(){
-        localStorage.setItem('token',"Basic "+window.btoa(username+":"+password));
+       localStorage.setItem('token',"Basic "+window.btoa(username+":"+password));
       window.location.href="computers.html";
 }
 http.onerror=function(){

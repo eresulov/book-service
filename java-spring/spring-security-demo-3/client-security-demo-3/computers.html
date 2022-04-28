@@ -4,6 +4,9 @@
     <title>My Program</title>
 </head>
 <body>
+  <button onclick="localStorage.removeItem('token');window.location.href='login.html';">Tehlukesiz cixis</button>
+<hr>
+
     <input id="ramModel" placeholder="ramin modelini bura yaz"><br>
     <input id="ramSize" placeholder="ramin size ni bura yaz"><br>
     <input id="ramName" placeholder="ramin adini yazin"><br>
@@ -35,9 +38,9 @@ let http= new XMLHttpRequest();
 loadRams();
 }
 
- http.open('POST','http://localhost:8091/rams',true);
+ http.open('POST','http://localhost:8091/rams',true);   
       http.setRequestHeader("Content-Type","application/json"); //servere bildiririkki gonderdiyimiz melumatin tipi nedir
-     http.setRequestHeader("Authorization","Basic "+window.btoa("developia:12"));
+      http.setRequestHeader("Authorization",localStorage.getItem('token'));
     http.send(JSON.stringify(ramObj)); // post servislerde send in ici bos olmur
 
 }
@@ -47,7 +50,7 @@ let http=new XMLHttpRequest();
     http.onload=function(){
         var result =this.responseText;
         var rams=JSON.parse(result);
-        console.log(rams)
+        console.log(rams);
         var r="";
         for (let i = 0; i<rams.length; i++) {
         r+="<tr>";  
@@ -69,7 +72,7 @@ let http=new XMLHttpRequest();
     }
 
         http.open('GET','http://localhost:8091/rams',true);
-          http.setRequestHeader("Authorization","Basic "+window.btoa("developia:12"))
+          http.setRequestHeader("Authorization",localStorage.getItem('token'));
     http.send();
 }    
 loadRams();
@@ -83,7 +86,7 @@ function deleteRam(ramId){
 
     
      http.open('DELETE','http://localhost:8091/rams/'+ramId,true);
-     http.setRequestHeader("Authorization","Basic "+window.btoa("developia:12")) 
+ http.setRequestHeader("Authorization",localStorage.getItem('token'));
 
      http.send();}
 

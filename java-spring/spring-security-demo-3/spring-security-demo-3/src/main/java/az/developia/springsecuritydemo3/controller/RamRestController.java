@@ -10,6 +10,7 @@ import javax.activation.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache.Connection;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,18 +29,22 @@ import az.developia.springsecuritydemo3.repository.Ramrepo;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "/rams")
+
 public class RamRestController {
+	
 @Autowired
+
 private Ramrepo ramrepository;
 
 	@GetMapping
-
+	@PreAuthorize(value = "hasAuthority('get:ram')")
 	public List<Ram> rams() {
 
 		return ramrepository.findAll();
 	}
 
 	@PostMapping
+	@PreAuthorize(value = "hasAuthority('save:ram')")
 	public void saveRam(@RequestBody Ram ram) {
 		ramrepository.save(ram);
 	}

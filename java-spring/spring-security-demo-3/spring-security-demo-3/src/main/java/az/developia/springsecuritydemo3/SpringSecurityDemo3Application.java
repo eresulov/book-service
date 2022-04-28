@@ -8,6 +8,7 @@ public class SpringSecurityDemo3Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringSecurityDemo3Application.class, args);
+	}public SpringSecurityDemo3Application() {
+		// TODO Auto-generated constructor stub
 	}
-
 }
