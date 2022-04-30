@@ -1,12 +1,13 @@
-package az.developia.springsecuritydemo3;
+package azdevelopia.springticketbooking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringSecurityDemo3Application {
+public class SpringTicketBookingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringSecurityDemo3Application.class, args);
+		SpringApplication.run(SpringTicketBookingApplication.class, args);
 	}
+
 }

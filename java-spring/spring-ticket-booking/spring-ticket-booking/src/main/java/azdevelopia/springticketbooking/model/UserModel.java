@@ -1,4 +1,5 @@
-package az.developia.springsecuritydemo3.model;
+package azdevelopia.springticketbooking.model;
+
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
