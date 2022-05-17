@@ -1,0 +1,25 @@
+Proyektdə olan əksikliklərin və məntiqi çatışmazlıqların qeydiyyatı.
+
+Proyektin tələbələrə verilə bilməsi üçün edilməli olan addımlar:
+1. Yeni istifadəçi hesabının açılması+
+2. İstifadəçinin hesabına daxil olması+
+3. İstifadəçinin öz komputerlərinin siyahısını görməsi+
+4. İstifadəçinin yeni komputer qeydiyyatı edə bilməsi+
+5. İstifadəçinin komputeri redaktə edə bilməsi+
+6. İstifadəçinin komputeri silə bilməsi+
+7. 
+
+
+Proyektin məntiqi çatışmazlıqları:
+1. Alıcının sifariş verdiyi zaman, əgər, məlumatları sistemdə olarsa, onda, yeni alıcı qeydiyyatının aparılmaması+
+2. Alış-veriş bölməsində komputer axtarışı+
+3. Alış-veriş bölməsində komputerlərin hissə-hissə yüklənməsi+
+4. Alış-veriş bölməsində kateqoriya axtarışı+
+5. Sifarişlər bölməsində axtarış+
+6. Sifarişlərin hissə-hissə yüklənməsi+
+7. Komputerlərim bölməsində komputer axtarışı+
+8. Komputerlərim bölməsində komputerlərin hissə-hissə yüklənməsi+
+9. 
+10. 
+11. 
+12. 

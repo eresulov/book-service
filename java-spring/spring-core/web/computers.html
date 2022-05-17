@@ -45,7 +45,7 @@ let http=new XMLHttpRequest();
         r+="<td>"+rams[i].name;
         r+="</td>";
 
-         r+="<td><button onlick='deleteRam("+rams[i].id+")'>Delete</button>";
+         r+="<td><button onlick='deleteRam'("+rams[i].id+")'>Delete</button>";
         r+="</td>";
 
         r+="</tr>";
@@ -63,7 +63,7 @@ function onSaveRam(){
     let ramName=document.getElementById('ramName').value;
     let ramObj={model:ramModel,size:ramSize,name:ramName};
 
-    let http= new XMLHttpRequest();
+    let http= new XMLHttpRequest();}
     http.onload=function(){
 loadRams();
     }
@@ -75,7 +75,7 @@ loadRams();
 function deleteRam(ramId){
     alert(ramID);
 }
-}
+
 
 </script>
 </body>

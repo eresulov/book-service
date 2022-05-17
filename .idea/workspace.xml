@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="957fce34-a77e-456d-8f30-e9a0b31f1dc4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/emral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-spring/spring-core/web/computers.html" beforeDir="false" afterPath="$PROJECT_DIR$/java-spring/spring-core/web/computers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-spring/spring-security-demo-3/spring-security-demo-3/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/java-spring/spring-security-demo-3/spring-security-demo-3/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-spring/spring-ticket-booking/client-ticket/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/java-spring/spring-ticket-booking/client-ticket/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-spring/spring-ticket-booking/spring-ticket-booking/src/main/java/azdevelopia/springticketbooking/config/SpringSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-spring/spring-ticket-booking/spring-ticket-booking/src/main/java/azdevelopia/springticketbooking/model/UserModel.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

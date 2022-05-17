@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>    
+    <title>SIGN UP Page</title>
+</head>
+<style>
+    html{
+        background: lightgray;
+    }
+    body{
+        position: relative;
+        top: 8rem;
+    }
+    .container{
+        width: 400px;
+        height: 300px;
+        margin: 0 auto;
+        background: dimgray;
+        opacity: 0.7;
+        border: 1px solid gray;
+        border-radius: 5px;
+        box-shadow: 2px 1px 0px 2px gray;
+        justify-content: center;
+    }
+
+    .container h3{
+        text-align: center;
+        color: whitesmoke;
+        font-size: larger;
+    }
+
+    .container .firstSubContainer{
+        width: 15rem;
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    .container .firstSubContainer input{
+        margin-left: 4rem;
+        padding: 0.4rem 1rem;
+        font-size: larger;
+
+    }
+
+    .container .firstSubContainer button{
+        width: 15rem;
+        position: relative;
+        left: 4.8rem;
+        padding: 0.2rem 1rem;
+        font-size: larger;
+    }
+
+    .container .secondSubContainer{
+        display: flex;
+        width: 15rem;
+        position: relative;
+        left: 6rem;
+        top: -1rem;
+        text-align: center;
+
+    }
+
+    .container .secondSubContainer a{
+        padding-top: 1rem;
+        text-decoration: none;
+        color: green;
+        font-weight: 700;
+    }
+
+    .container .firstSubContainer input,
+    button{
+        border-radius: 4px;
+        outline: none;
+        border: none;
+
+    }
+
+    button:hover{
+        background: black;
+        opacity: 0.6;
+        color: white;
+        transition: all 0.8s ease ;
+    }
+</style>
+<body>
+  
+  <div class="container">
+    <h3>SignUp</h3>
+    <div class="firstSubContainer">
+    <input id="username" placeholder="Username"><br>
+    <input id="password" placeholder="Password"><br>
+    <button onclick="onCreateAccount()">Register</button>
+    </div>  
+    <br>
+    <div class="secondSubContainer">
+    <p>Do you have an account?</p>
+    <a href="login.html">Login</a>
+    </div>
+  </div>
+<script>
+  
+function onCreateAccount(){ //hesab yaranmagi qorunmamalidir 
+    let username=document.getElementById('username').value;
+    let password =document.getElementById('password').value;
+    let user={username:username,password:password} //icine username parol servere gondermekcun
+    let http=new XMLHttpRequest(); // obyektini yaradiriq cunki servere melumat gonderecem
+
+    http.onload=function(){
+      alert("User ugurla yaradildi");
+      window.location.href="login.html";
+}
+http.onerror=function(){
+alert('User yaranmadi');
+}
+
+ http.open('POST','http://localhost:8091/users/signup',true); //hesab yaradirig burdan ora nese gonderirik
+   http.setRequestHeader("Content-Type","application/json"); //gonderdiyimiz melumatin tipi 
+    http.send(JSON.stringify(user)); // post servislerde send in ici bos olmur get dir deye ici bos olmalidir
+    // front dan back e json a cevirib gonderirik
+
+}
+</script>
+</body>
+</html> 
