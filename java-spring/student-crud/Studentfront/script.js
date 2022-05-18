@@ -1,8 +1,12 @@
 var selectedStudentId = 0;
+
 var API_URL = "http://localhost:8585"; //secilmis telebenin id sini bu deyisene memimsedirik
 var username=localStorage.getItem('username');
 var password=localStorage.getItem('password');
 var token="Basic "+window.btoa(username+":"+password);
+
+var gridOptionsGlobal;
+
 var studentNameInput = document.getElementById('student-name'); //bunu basda hecbir funksiyanin icinde olmamaqla elaqelendirdik harda lazimdirsa bu sekilde istifade edirik
 var studentSurnameInput = document.getElementById('student-surname');
 
@@ -78,33 +82,9 @@ function loadAllStudents() {
 }
 
 function fillStudentsTable(students) {
-    var studentsTbodyHtml = "";
-    for (var i = 0; i < students.length; i++) {
-        var student = students[i];
-        studentsTbodyHtml += "<tr><td>" + student.id + "</td>";
-        studentsTbodyHtml += "<td>" + student.name + "</td>";
-        studentsTbodyHtml += "<td>" + student.surname + "</td>";
-        studentsTbodyHtml += "<td><button class='btn btn-danger' onclick='onDeleteStudent(" +
-            student.id + ")'>Delete</button> ";
-        studentsTbodyHtml += "<button class='btn btn-primary' onclick='onEditStudent(" +
-            student.id + ")' >Update</button>  ";
-
-        studentsTbodyHtml += "<button class='btn btn-warning' onclick='onShowStudentNotes(" +
-            student.id + ")' type='button'  data-toggle='modal' data-target='#notesListModal' >Notes</button>  ";
-
-        studentsTbodyHtml += "<button class='btn btn-secondary' onclick='onNoteStudent(" +
-            student.id + ")' type='button'  data-toggle='modal' data-target='#noteModal'>Add Note</button></td></tr>";
-    }
-    studentsTbodyElement.innerHTML = studentsTbodyHtml;
-    
-    $(document).ready(function () {
-      
-   $('#students-table').DataTable({
-       
-   });
-});
+   gridOptionsGlobal.api.setRowData(students); //bos olan mekumati doldurur row un ici
 }
-loadAllStudents();
+
 
 function onDeleteStudent(studentId) {
     if (confirm('Silmeye eminsen?')) {
@@ -213,3 +193,31 @@ function loadAllStudentNotes(studentId) {
     http.setRequestHeader("Authorization",token);
     http.send();
 }
+function prepareAgGridTable(){
+    const columnDefs = [ //sutunlar teyin edilir
+        { field: "id" ,headerName :"Kod"},
+        { field: "name",headerName :"Ad" }, 
+        { field: "surname" ,headerName :"Soyad"}
+      ];
+      
+   
+      const gridOptions = {
+        columnDefs: columnDefs,
+        rowData: [],
+        defaultColDef:{sortable:true,filter : true}, //sortlasdirir 
+        animateRows:true, //animasiyali sort
+        floatingFilter:true,
+        pagination:true, //hisse hisse verir page lere bolur
+        rowSelection:'multiple'
+      }; //ayarlari sazlanir ag-grid in 
+      
+      gridOptionsGlobal=gridOptions; //grid options bu funksiyada local oldugu ucun globalda grid option deyiseni yaratmaliyiq
+
+      //serverden html sehifesi yuklenende bu kod calisir myStudents e ag grid sazlanir
+      document.addEventListener('DOMContentLoaded', () => {
+          const gridDiv = document.querySelector('#myStudents');
+          new agGrid.Grid(gridDiv, gridOptions);
+      });
+}
+prepareAgGridTable();
+loadAllStudents();
