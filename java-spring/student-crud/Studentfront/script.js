@@ -1,12 +1,15 @@
 var selectedStudentId = 0;
 var API_URL = "http://localhost:8585"; //secilmis telebenin id sini bu deyisene memimsedirik
+var username=localStorage.getItem('username');
+var password=localStorage.getItem('password');
+var token="Basic "+window.btoa(username+":"+password);
 var studentNameInput = document.getElementById('student-name'); //bunu basda hecbir funksiyanin icinde olmamaqla elaqelendirdik harda lazimdirsa bu sekilde istifade edirik
 var studentSurnameInput = document.getElementById('student-surname');
 
 var studentsTbodyElement = document.getElementById('students-tbody');
 var notesTbodyElement = document.getElementById('notes-tbody');
 
-var token="Basic "+window.btoa("muellim-1:1");
+
 
 var headerTextElement = document.getElementById('header-text');
 

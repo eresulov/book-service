@@ -2,6 +2,7 @@ package az.developia.studentcrud.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +37,9 @@ public class UserRestController {
 		//authority ni database e save edirik
 		return savedUser;
 	}
+@GetMapping(path = "/login")
+public void login() {
+	//bu linke gondereceyik username ve parolu success gelse dogrudur username
+	//parol duz yazmisiq ya yox duzyazmisiqsa student sehifesine kececik
 }
-
-
-
+}
