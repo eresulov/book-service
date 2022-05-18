@@ -36,8 +36,13 @@
         var http=new XMLHttpRequest();
 
         http.onload=function(){
+            var response=this.responseText;
+            var user=JSON.parse(response);
+            if(user.username==""){
+                alert("Bu istifadeci artiq movcuddur xahis edirik basqa adla daxil olun");
+            }else{
         alert("Success");
-        }
+        }}
         var userObject={};
         userObject.username=username;
         userObject.password=password;

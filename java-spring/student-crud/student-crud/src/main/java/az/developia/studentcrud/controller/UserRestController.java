@@ -1,5 +1,7 @@
 package az.developia.studentcrud.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +28,14 @@ public class UserRestController {
 	
 	@PostMapping
 	public UserModel addUser(@RequestBody UserModel user) {
+		//username evvel login olunubsa islemesin deye kod
+		Optional<UserModel> userOptional = userRepository.findById(user.getUsername());
+		//ctrl +1 
+		if(userOptional.isPresent()) {
+			// eger ispresent varsda yeni deyerini bos edirik ve return
+			user.setUsername("");
+			return 	user;
+		}else {
 		user.setPassword("{noop}"+user.getPassword());
 		user.setEnabled(true);
 		UserModel savedUser= userRepository.save(user);
@@ -36,6 +46,7 @@ public class UserRestController {
 		authorityRepository.save(authority);	
 		//authority ni database e save edirik
 		return savedUser;
+		}
 	}
 @GetMapping(path = "/login")
 public void login() {
