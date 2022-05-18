@@ -22,6 +22,7 @@
            
         </div>
         <input type="submit" value="Giris Et" class="btn btn-success">
+        <button class="btn btn-primary" type="button" onclick="onOpenSignupPage()">Hesab Yarat</button>
     </form>
   </div>
   <script>
@@ -47,7 +48,9 @@
         http.setRequestHeader("Authorization","Basic "+window.btoa(username+":"+password));
         http.send();
 
-
+      }
+      function onOpenSignupPage(){
+          window.location.href="signup.html";
       }
   </script>
 </body>
