@@ -10,6 +10,9 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
 
     <style>
         #header-text {
@@ -20,7 +23,11 @@
             font-weight: bold;
         }
     </style>
-
+<script>
+    $(document).ready( function () {
+    $('#students-table').DataTable();
+} );
+</script>
 </head>
 
 <body>
@@ -41,7 +48,8 @@
         </form>
     </div>
     <hr>
-    <table class="table table-bordered">
+    <div class="container">
+    <table class="table table-bordered" id="students-table">
         <thead>
             <tr>
                 <th>Kod</th>
@@ -54,7 +62,7 @@
         </tbody>
     </table>
     </div>
-
+</div>
     <div class="modal fade" id="noteModal"> // fade yavas yavas gelmesidir
         <div class="modal-dialog">
           <div class="modal-content">
@@ -78,6 +86,36 @@
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="notesListModal"> 
+        <div class="modal-dialog">
+          <div class="modal-content">
+    
+            <div class="modal-header">
+              <h4 class="modal-title">Student's Notes</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                            
+            <table class="table table-bordered">
+                 <thead>
+        <tr>
+            <th>Id</th>
+            <th>Qeyd</th>
+        </tr>
+                </thead>
+                <tbody id="notes-tbody">
+
+                </tbody>
+            </table>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <script>
         var selectedStudentId = 0;
         var API_URL = "http://localhost:8585"; //secilmis telebenin id sini bu deyisene memimsedirik
@@ -85,6 +123,8 @@
         var studentSurnameInput = document.getElementById('student-surname');
 
         var studentsTbodyElement = document.getElementById('students-tbody');
+        var notesTbodyElement = document.getElementById('notes-tbody');
+
 
         var headerTextElement = document.getElementById('header-text');
 
@@ -160,10 +200,14 @@
                 studentsTbodyHtml += "<button class='btn btn-primary' onclick='onEditStudent("
                     + student.id + ")' >Update</button>  ";
 
+                    studentsTbodyHtml += "<button class='btn btn-warning' onclick='onShowStudentNotes("
+                    + student.id + ")' type='button'  data-toggle='modal' data-target='#notesListModal' >Notes</button>  ";
+
                     studentsTbodyHtml += "<button class='btn btn-secondary' onclick='onNoteStudent("
-                    + student.id + ")' type='button'  data-toggle='modal' data-target='#noteModal'>Note</button></td></tr>";
+                    + student.id + ")' type='button'  data-toggle='modal' data-target='#noteModal'>Add Note</button></td></tr>";
             }
             studentsTbodyElement.innerHTML = studentsTbodyHtml; //tbody ni icerisini tr lerle doldurur
+         
         }
         loadAllStudents();
         function onDeleteStudent(studentId) {
@@ -236,11 +280,36 @@ http.onload = function () {
 http.open("POST", API_URL + "/student-notes", true)//metodun tipi , cagiracagimiz yer 
 http.setRequestHeader("Content-Type", "application/json")
 http.send(JSON.stringify(studentNoteObject)); // json un stringfy funksiyasi json a cevirir 
-2
+
 }
+function onShowStudentNotes(studentId){
+    loadAllStudentNotes(studentId);
+}
+function fillStudentNotesTable(notes){
+    
+            var notesTbodyHtml = "";
+            for (var i = 0; i < notes.length; i++) {
+                var note = notes[i];
+                    notesTbodyHtml += "<tr><td>" + note.id + "</td>";
+                    notesTbodyHtml += "<td>" + note.note + "</td>";
+                    notesTbodyHtml += "</tr>";
+            }
+            notesTbodyElement.innerHTML = notesTbodyHtml; //tbody ni icerisini tr lerle doldurur
+        }
+
+        function loadAllStudentNotes(studentId) {
+            var http = new XMLHttpRequest();
+            http.onload = function () {
+                var response = this.responseText;
+                var notesArray = JSON.parse(response);
+                fillStudentNotesTable(notesArray); // bu funksiya massivi istifade ede bilsin icerisinde  patametr gonderirik
+            }
+
+            http.open("GET", API_URL + "/student-notes/student/"+studentId, true)
+
+            http.send();
+        }
     </script>
 
-
 </body>
-
 </html>

@@ -1,23 +1,7 @@
-
-  <button type="button"  data-toggle='modal' data-target='#noteModal'> //modal acan duyme oldugunu anliyir data togle la ,data target acmaq istediyimiz modalin id si teyin olunur
-   
-  </button>
-  <div class="modal fade" id="noteModal"> // fade yavas yavas gelmesidir
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h4 class="modal-title">New Note</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button> // x duymesidir 
-        </div>
-        <div class="modal-body">
-        Qeyd formu burda olacaq
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-
+<form onsubmit="onSaveStudentNote(event)">
+            <div class="form-group">
+                <label for="student-note">Note</label>
+                <input id="student-note" class="form-control">
+            </div>
+            <input type="submit" value="Yadda saxla" class="btn btn-success">
+        </form>

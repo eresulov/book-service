@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import az.developia.studentcrud.exception.MyRuntimeException;
 import az.developia.studentcrud.model.Student;
+import az.developia.studentcrud.model.StudentNote;
+import az.developia.studentcrud.repository.StudentNoteRepository;
 import az.developia.studentcrud.repository.StudentRepository;
 
 @RestController
@@ -30,6 +32,9 @@ public class StudentRestController {
 
 	@Autowired
 	private StudentRepository studentRepository;
+	
+	@Autowired
+	private StudentNoteRepository studentNoteRepository;
 	
 @PostMapping
 public Student save(@Valid @RequestBody Student student,BindingResult result) {
@@ -46,6 +51,8 @@ public List<Student> findAll(){
 @DeleteMapping(path="/{id}")
 public void DeleteById(@PathVariable Integer id) {
 	studentRepository.deleteById(id);
+	List<StudentNote> studentNotes =studentNoteRepository.findAllByStudentId(id);
+	studentNoteRepository.deleteAll(studentNotes); //hemin telebeye aid qeydleri silir
 }
 	@GetMapping(path="/{id}") //update etmek ucundur 
 public Student findById (@PathVariable Integer id) {
