@@ -41,7 +41,7 @@ function onLogin(event){
           localStorage.setItem('password',password);
           window.location.href="student.html";
       }else {
-          alert("Melumatlar yanlisdir !!!");
+          alert('Melumatlar yanlisdir !!!');
       }
   }
   http.open("GET",API_URL+"/users/login",true);
