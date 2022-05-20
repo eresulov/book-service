@@ -13,7 +13,7 @@ values
 ('m3','teacher');
 
 insert into student
-(name,surname)
-values('Emral','Resulov'),
-('Anar','Murtuzayev'),
-('Tahir','Xelilov');
+(name,surname,teacher)
+values('Emral','Resulov','m1'),
+('Anar','Murtuzayev','m2'),
+('Tahir','Xelilov','m3');

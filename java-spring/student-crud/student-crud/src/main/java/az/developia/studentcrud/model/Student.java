@@ -1,5 +1,6 @@
 package az.developia.studentcrud.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,9 @@ private String name;
 	@Size(min=3,message="Soyad minimum 3 herfli olmalidir")
 	@Size(max=30,message="Soyad maximum 30 herfli olmalidir")
 private String surname; 
+
+	private String teacher;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -37,6 +41,12 @@ private String surname;
 	}
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+	public String getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
 	}
 	
 }

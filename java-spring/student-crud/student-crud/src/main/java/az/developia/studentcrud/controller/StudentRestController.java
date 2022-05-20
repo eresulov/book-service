@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,31 +33,37 @@ public class StudentRestController {
 
 	@Autowired
 	private StudentRepository studentRepository;
-	
+
 	@Autowired
-	private StudentNoteRepository studentNoteRepository;
+private StudentNoteRepository studentNoteRepository;
 	
 @PostMapping
 public Student save(@Valid @RequestBody Student student,BindingResult result) {
 if(result.hasErrors()) {
 	throw new MyRuntimeException(result);
 }
+	student.setTeacher(getUser());
 	return studentRepository.save(student);
 }
 
-@GetMapping
-public List<Student> findAll(){
-	return studentRepository.findAll();
-}
-@DeleteMapping(path="/{id}")
-public void DeleteById(@PathVariable Integer id) {
-	studentRepository.deleteById(id);
-	List<StudentNote> studentNotes =studentNoteRepository.findAllByStudentId(id);
-	studentNoteRepository.deleteAll(studentNotes); //hemin telebeye aid qeydleri silir
-}
-	@GetMapping(path="/{id}") //update etmek ucundur 
-public Student findById (@PathVariable Integer id) {
+	@GetMapping
+	public List<Student> findAll() {
+		return studentRepository.findAllByTeacher(getUser());
+	}
+
+	@DeleteMapping(path = "/{id}")
+	public void DeleteById(@PathVariable Integer id) {
+		studentRepository.deleteById(id);
+		List<StudentNote> studentNotes = studentNoteRepository.findAllByStudentId(id);
+		studentNoteRepository.deleteAll(studentNotes); // hemin telebeye aid qeydleri silir
+	}
+
+	@GetMapping(path = "/{id}") // update etmek ucundur
+	public Student findById(@PathVariable Integer id) {
 		return studentRepository.findById(id).get();
 	}
-	
+	private String getUser() {
+		return SecurityContextHolder.getContext().getAuthentication().getName();
+		//harda username e ehtiyacimiz vbarsa istifade edecik
+	}
 }
