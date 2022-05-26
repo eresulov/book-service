@@ -9,11 +9,10 @@ var gridOptionsGlobal;
 
 var studentNameInput = document.getElementById('student-name'); //bunu basda hecbir funksiyanin icinde olmamaqla elaqelendirdik harda lazimdirsa bu sekilde istifade edirik
 var studentSurnameInput = document.getElementById('student-surname');
+var studentProfilePhotoInput = document.getElementById('student-photo');
 
 var studentsTbodyElement = document.getElementById('students-tbody');
 var notesTbodyElement = document.getElementById('notes-tbody');
-
-
 
 var headerTextElement = document.getElementById('header-text');
 
@@ -22,50 +21,24 @@ var surnameErrorElement = document.getElementById('surname-error');
 
 var studentNoteInput = document.getElementById('student-note');
 
-function onSaveStudent(event) {
+ async function onSaveStudent(event) {
 
     event.preventDefault(); //form un default gelen ozelliyini legv edirik form yenilemeli deyil mane olur 
-    var studentName = studentNameInput.value // adini yazacagimiz inputu qaytarir
-    var studentSurname = studentSurnameInput.value;
+    
+    let formData=new FormData();
+    let photo=studentProfilePhotoInput.files[0];
 
-    var studentObject = {};
-    studentObject.id = selectedStudentId; //secdiyimiz id update edir yeni telebe etmir daha 
-    studentObject.name = studentName; // (name ) back end le ad eyni olmalidir
-    studentObject.surname = studentSurname;
-
-    var http = new XMLHttpRequest(); //ajax request sinifinnen obyekt yaradiriq
-
-    http.onload = function () {
-        //bazada olan butun telebeleri cedvele yuklemek
-        //servere e melumat gonderirik serverden cavab gelende yoxlayiriq ki eger kod 400 durse 
-        if (this.status == 400) {
-            var nameError = "";
-            var surnameError = "";
-            var erroObject = JSON.parse(this.responseText); //js formatina ceviririkk
-            erroObject.validations.forEach(error => {
-                if (error.field == 'name') { //eger field name dirse demeli name ein errorudur
-
-                    nameError += error.message + "<br>";
-                }
-                if (error.field == 'surname') {
-                    surnameError += error.message + "<br>";
-                }
-            });
-            nameErrorElement.innerHTML = nameError; //id si name-error dursa
-            surnameErrorElement.innerHTML = surnameError;
-        } else {
-            clearErrorMessages();
-            selectedStudentId = 0; // redakte etdikden sonra yeniden 0 edirikki telebe qeydiyatina kecsin
-            setHeaderText('Yeni Telebe Qeydiyyati ');
-            loadAllStudents();
-        }
-    }
-
-    http.open("POST", API_URL + "/students", true) //cagiracagimiz yer 
-    http.setRequestHeader("Content-Type", "application/json")
-    http.setRequestHeader("Authorization",token);
-    http.send(JSON.stringify(studentObject)); // json un stringfy funksiyasi json a cevirir 
-
+    formData.append("file",photo);
+    let response=await fetch(API_URL+'/files/upload',{
+method:"POST",
+body:formData,
+headers:{
+    "Authorization":token
+}
+    });
+   if(response.status==200){
+       alert('Sekil yuklendi');
+   }
 }
 
 function loadAllStudents() {
@@ -196,7 +169,7 @@ function loadAllStudentNotes(studentId) {
 function prepareAgGridTable(){
     const columnDefs = [ //sutunlar teyin edilir
         { field: "id" ,headerName :"Kod"},
-        { field: "name",headerName :"Ad" }, 
+        { field: "name",headerName :"Ad" },
         { field: "surname" ,headerName :"Soyad"}
       ];
       

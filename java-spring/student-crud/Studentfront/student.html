@@ -23,7 +23,7 @@
 <body>
     <div style="width: 30%;margin:auto;">
         <h3 id="header-text"></h3>
-        <form onsubmit="onSaveStudent(event)">
+        <form onsubmit="onSaveStudent(event)" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="student-name">Ad</label>
                 <input id="student-name" class="form-control">
@@ -33,6 +33,11 @@
                 <label for="student-surname">Soyad</label>
                 <input id="student-surname" class="form-control">
                 <div id="surname-error" class="error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="student-photo">Profile photo</label>
+                <input id="student-photo" class="form-control" type="file">
             </div>
             <input type="submit" value="Yadda saxla" class="btn btn-success">
         </form>
