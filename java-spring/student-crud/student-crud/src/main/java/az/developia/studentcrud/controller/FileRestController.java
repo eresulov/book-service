@@ -29,6 +29,11 @@ public class FileRestController {
 	@PostMapping(path = "/upload")
 	public FileModel uploadFile(@RequestParam(name = "file", required = false) MultipartFile file) {
 		// required=false fayl yuklemek mecbur deil file bos gelsede problem olmayacaq
+		FileModel model=new FileModel();
+		if(file==null) {
+			model.setFileName("fakeimage.png");
+			return 	model;
+		}
 		String fileName=file.getOriginalFilename();
 		try {
 			InputStream stream = file.getInputStream();
@@ -52,7 +57,7 @@ public class FileRestController {
 		} catch (Exception exc) {
 			exc.printStackTrace();
 		}
-		FileModel model=new FileModel();
+	
 		model.setFileName(fileName);
 		return model;
 	}

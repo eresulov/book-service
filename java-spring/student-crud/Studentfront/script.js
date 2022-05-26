@@ -61,10 +61,15 @@ function fillStudentsTable(students) {
 }
 
 
-function onDeleteStudent(studentId) {
+function onDeleteStudent() {
+  var selectedStudents=gridOptionsGlobal.api.getSelectedRows();
+    
+  var selectedStudents=gridOptionsGlobal.api.getSelectedRows();
+  if(length>0){
+
+  
     if (confirm('Silmeye eminsen?')) {
-
-
+var studentId = [0].id; //siyahidan secilen telebelerin obyektini qaytarir Massiv
         var http = new XMLHttpRequest();
         http.onload = function () {
             loadAllStudents(); // birce defe sehifeni yenilemek ucundur 
@@ -74,6 +79,8 @@ function onDeleteStudent(studentId) {
         http.setRequestHeader("Authorization",token);
         http.send();
     }
+} else 
+alert('Siyahidan silmek istediyinizi secin!');
 }
 
 function onEditStudent(studentId) {
