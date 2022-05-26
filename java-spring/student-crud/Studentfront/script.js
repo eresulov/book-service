@@ -227,8 +227,8 @@ function saveStudent(photo){
             nameErrorElement.innerHTML = nameError; //id si name-error dursa
             surnameErrorElement.innerHTML = surnameError;
         } else {
-            clearErrorMessages();
-            selectedStudentId = 0; // redakte etdikden sonra yeniden 0 edirikki telebe qeydiyatina kecsin
+            clearErrorMessages();gridOptionsGlobal.api.getSelectedRows();
+                        selectedStudentId = 0; // redakte etdikden sonra yeniden 0 edirikki telebe qeydiyatina kecsin
             setHeaderText('Yeni Telebe Qeydiyyati ');
             loadAllStudents();
         }
@@ -237,4 +237,12 @@ function saveStudent(photo){
     http.setRequestHeader("Content-Type", "application/json")
     http.setRequestHeader("Authorization",token);
     http.send(JSON.stringify(studentObject)); // json un stringfy funksiyasi json a cevirir 
+}
+
+
+function onShowImage(){
+var selectedStudents=gridOptionsGlobal.api.getSelectedRows(); //ag-gridden secilen setrleri obyekt sekilde qaytarir
+console.log(selectedStudents[0]); 
+
+document.getElementById('student-image').src=   API_URL +"/files/download/"+ selectedStudents[0].profilePhoto;
 }
