@@ -18,7 +18,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
 		.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().
-		antMatchers(HttpMethod.POST, "/users/**").permitAll().
+		antMatchers(HttpMethod.POST, "/users/**").permitAll()
+		.antMatchers(HttpMethod.GET, "/files/download/**").permitAll().
 		anyRequest().authenticated().and().httpBasic();
 		http.headers().frameOptions().disable(); //h2 de session la bagli problem yaranmasin 
 }
