@@ -14,7 +14,7 @@ public class Student {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	@NotEmpty(message="Bos qoymaq olmaz")//bos qoymaq olmaz
-	@Size(min=3,message="Ad minimum 3 herfli olmalidir")
+	@Size(min=3,message="Ad mifnimum 3 herfli olmalidir")
 	@Size(max=30,message="Ad maximum 30 herfli olmalidir")
 private String name;
 	@NotEmpty(message="Bos qoymaq olmaz")//bos qoymaq olmaz
@@ -23,7 +23,14 @@ private String name;
 private String surname; 
 
 	private String teacher;
+	private String profilePhoto;
 	
+	public String getProfilePhoto() {
+		return profilePhoto;
+	}
+	public void setProfilePhoto(String profilePhoto) {
+		this.profilePhoto = profilePhoto;
+	}
 	public Integer getId() {
 		return id;
 	}

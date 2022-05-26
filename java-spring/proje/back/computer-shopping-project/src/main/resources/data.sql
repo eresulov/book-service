@@ -15,11 +15,11 @@ values
 insert into computer
 (brand,model,price,description,is_new,image_path,memory,cpu,drive_memory,username)
 values
-('HP','G62',548,'HP g62 computer',1,'hp-g62.jpg',8,'Core i7',500,'u1'),
-('Acer','Aspire',859,'Acer Aspire computer',0,'acer-aspire.jpg',12,'Core i9',750,'u1'),
-('HP','G62',544,'HP g62 computer',1,'hp-g62.jpg',8,'Core i7',800,'u1'),
-('HP','G62',1254,'HP g62 computer',0,'hp-g62.jpg',8,'Core i3',300,'u2'),
-('HP','G62',654,'HP g62 computer',1,'hp-g62.jpg',8,'Core i11',200,'u2');
+('HP','G62',548,'HP EliteBook',1,'hp.jpg',8,'Core i7',500,'u1'),
+('Acer','Aspire',859,'Acer Aspire computer',0,'asus.jpg',12,'Core i9',750,'u1'),
+('Asus','G62',544,'ViVobook',1,'hp-g62.jpg',8,'Core i7',800,'u1'),
+('HP','G62',1254,'HP g62 computer',0,'acer-aspire.jpg',8,'Core i3',300,'u2'),
+('Lenovo','G62',654,'ThinkPad',1,'lenovo.jpg',8,'Core i11',200,'u2');
  
 
 

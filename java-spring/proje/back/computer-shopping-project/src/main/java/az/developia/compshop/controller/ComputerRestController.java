@@ -73,8 +73,6 @@ public class ComputerRestController {
 	public Computer findByIdShopping(@PathVariable Integer id) {
 		return computerRepository.findById(id).get();
 	}
-	
-
 	private String getUser() {
 		return SecurityContextHolder.getContext().getAuthentication().getName();
 	}
