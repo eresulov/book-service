@@ -1,0 +1,28 @@
+Asif
+string tool
+java tam obyekt yonlu deil cunki primitive tipler var ()
+Collection 100%
+Stack hip yaddas garbage collector nevaxt silir seviyeleri 
+jdk jre jcompiler nedir
+data structures
+database sual
+jsp servlet 
+spring data ,jpa , security,mvc 
+ controller rest cont ferqi 
+dependency injection inversion of control
+spring context maraglan 
+niye spring?
+rest api soap api,linux , crat emeliyati
+rest api name url adlari nece yazilmalidi?
+connection pul nedi string pul
+
+Emil
+sql injection
+oop,design pattern
+solid prinsips
+jdbc prepared statement statement ferqi
+threading multithreding
+monitor lock ,hashmap eyni ust uste dusende ne bas verir
+one to many hibernate
+exception
+

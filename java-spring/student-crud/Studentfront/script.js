@@ -20,6 +20,8 @@ var nameErrorElement = document.getElementById('name-error');
 var surnameErrorElement = document.getElementById('surname-error');
 
 var studentNoteInput = document.getElementById('student-note');
+var newNoteButton = document.getElementById('new-note-button');
+var allowNewNote=false;
 
 async function onSaveStudent(event) {
 
@@ -111,13 +113,24 @@ function clearErrorMessages() {
     surnameErrorElement.innerHTML = "";
 }
 
-function onNoteStudent(studentId) {
-    selectedStudentId = studentId;
-
+function onNoteStudent() {
+    var selectedStudents = gridOptionsGlobal.api.getSelectedRows();
+    if (selectedStudents.length==1) {
+        studentNoteInput.disabled=false;
+        allowNewNote=true;
+        studentNoteInput.value='';
+        var studentId=selectedStudents[0].id;
+        selectedStudentId = studentId;
+}else {
+    studentNoteInput.disabled=true;
+    allowNewNote=false;
+    studentNoteInput.value='Siyahidan 1 telebe secilmelidir!!!';
+}
 }
 
-
 function onSaveStudentNote(event) {
+if(allowNewNote){
+
 
     event.preventDefault(); //form un default gelen ozelliyini legv edirik form yenilemeli deyil mane olur 
     var studentNote = studentNoteInput.value // bu inputdan goturub server e gonderir
@@ -145,7 +158,7 @@ function onSaveStudentNote(event) {
     http.setRequestHeader("Authorization", token);
 
     http.send(JSON.stringify(studentNoteObject)); // json un stringfy funksiyasi json a cevirir 
-
+}
 }
 
 function onShowStudentNotes(studentId) {
