@@ -1,6 +1,6 @@
 package az.developia.springsecuritydemo3.config;
 
-import javax.sql.DataSource;
+import javax.sql.DataSource;eclise
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -22,10 +22,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().
 		antMatchers(HttpMethod.POST, "/users/signup/**").permitAll().
 		anyRequest().authenticated().and().httpBasic();
+		//csrf web proqramin melumat alis verisini qadagan edir
 //cross cors disable etmeliyik basqa ip de port da olanlar cagira bilsin deye 
 		// authorizeRequests() gelen sorgulari yoxla
-		// HttpMethod.OPTIONS acib yoxlamasi emeliyatidir ve "/**" butun sorgulara
-		// baxilmaga icazedir
+		// HttpMethod.OPTIONS acib yoxlamasi emeliyatidir ve "/**" butun sorgulara baxilmaga icazedir
+		//permitall acmaqdir sign up acilir
 	}
 
 	@Autowired
