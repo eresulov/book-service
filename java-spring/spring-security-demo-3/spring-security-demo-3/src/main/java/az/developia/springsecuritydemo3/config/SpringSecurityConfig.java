@@ -1,6 +1,6 @@
 package az.developia.springsecuritydemo3.config;
 
-import javax.sql.DataSource;eclise
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
